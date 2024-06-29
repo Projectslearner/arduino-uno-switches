@@ -1,33 +1,32 @@
 /*
-    Project name : Switches
-    Modified Date: 09-06-2024
+    Project name : Arduino Uno Switches
+    Modified Date: 29-06-2024
     Code by : Projectslearner
     Website : https://projectslearner.com/learn/arduino-uno-switches
 */
 
-const int pinOFswitch = 3;  
-const int LED = 8;  
+// Define the pin connected to the push button
+const int buttonPin = 2;
 
-void setup() 
-{  
-  pinMode(pinOFswitch, INPUT);  
-  pinMode(LED, OUTPUT);  
-  Serial.begin(9600); // Initialize serial communication
-}  
+void setup() {
+  // Initialize serial communication for debugging
+  Serial.begin(9600);
 
-void loop() 
-{  
-  int ValueOFswitch;  
-  ValueOFswitch = digitalRead(pinOFswitch);  
+  // Set the button pin as input
+  pinMode(buttonPin, INPUT);
+}
 
-  if (ValueOFswitch == HIGH) {  
-    digitalWrite(LED, HIGH);  
-    Serial.println("Switch is pressed"); // Output switch state to serial monitor
-    delay(500);  
-  }  
-  else {  
-    digitalWrite(LED, LOW);  
-    Serial.println("Switch is released"); // Output switch state to serial monitor
-    delay(500);  
-  }  
+void loop() {
+  // Read the state of the push button
+  int buttonState = digitalRead(buttonPin);
+
+  // Print the button state to the Serial Monitor
+  if (buttonState == HIGH) {
+    Serial.println("Button pressed");
+  } else {
+    Serial.println("Button not pressed");
+  }
+
+  // Add a small delay to avoid flooding the Serial Monitor
+  delay(200);
 }
